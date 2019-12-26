@@ -72,6 +72,12 @@ async fn start_inner(wasm_ext: wasm_ext::ffi::Transport) -> Result<Client, Box<d
 		info!("     KUSAMA FOUNDATION      ");
 		info!("----------------------------");
 	}
+	if config.chain_spec.name().starts_with("Yuhunet"){
+		info!("----------------------------");
+		info!("This chain is supported by  ");
+		info!("     Yuhu Tech Shanghai     ");
+		info!("----------------------------");
+	}
 	info!("Node name: {}", config.name);
 	info!("Roles: {:?}", config.roles);
 
