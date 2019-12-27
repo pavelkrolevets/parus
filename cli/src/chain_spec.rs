@@ -32,6 +32,8 @@ pub enum ChainSpec {
 	StagingTestnet,
 	/// Parus network
 	Parus,
+	/// Yuhu network
+	Yuhu,
 }
 
 impl Default for ChainSpec {
@@ -44,6 +46,7 @@ impl Default for ChainSpec {
 impl ChainSpec {
 	pub(crate) fn load(self) -> Result<service::ChainSpec, String> {
 		Ok(match self {
+			ChainSpec::Yuhu => service::chain_spec::yuhu_testnet_config(),
 			ChainSpec::Parus => service::chain_spec::parus_testnet_config(),
 			ChainSpec::Kusama => service::chain_spec::kusama_config()?,
 			ChainSpec::Development => service::chain_spec::development_config(),
@@ -59,6 +62,7 @@ impl ChainSpec {
 			"kusama" => Some(ChainSpec::Kusama),
 			"staging" => Some(ChainSpec::StagingTestnet),
 			"parus" => Some(ChainSpec::Parus),
+			"yuhu" => Some(ChainSpec::Yuhu),
 			"" => Some(ChainSpec::default()),
 			_ => None,
 		}
