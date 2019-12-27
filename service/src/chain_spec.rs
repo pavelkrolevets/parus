@@ -35,7 +35,7 @@ use pallet_staking::Forcing;
 
 const STAGING_TELEMETRY_URL: &str = "wss://telemetry.polkadot.io/submit/";
 const DEFAULT_PROTOCOL_ID: &str = "dot";
-const YUHU_PROTOCOL_ID: &str = "yuhunet";
+const PARUS_PROTOCOL_ID: &str = "parus";
 
 /// Specialised `ChainSpec`.
 pub type ChainSpec = ::service::ChainSpec<GenesisConfig>;
@@ -390,7 +390,7 @@ pub fn local_testnet_config() -> ChainSpec {
 }
 
 
-fn yuhu_testnet_config_genesis() -> GenesisConfig {
+fn parus_testnet_config_genesis() -> GenesisConfig {
 	// subkey inspect "$SECRET"
 	let endowed_accounts = vec![
 		// Cyuhj9cbv63JWnwePb5EXLS97UUByzkWjsy6Q691KDwSt4X
@@ -539,15 +539,15 @@ fn yuhu_testnet_config_genesis() -> GenesisConfig {
 }
 
 /// Yuhu testnet config.
-pub fn yuhu_testnet_config() -> ChainSpec {
+pub fn parus_testnet_config() -> ChainSpec {
 	let boot_nodes = vec![];
 	ChainSpec::from_genesis(
-		"Yuhu Testnet",
-		"yuhu_testnet",
-		yuhu_testnet_config_genesis,
+		"Parus Testnet",
+		"parus_testnet",
+		parus_testnet_config_genesis,
 		boot_nodes,
 		Some(TelemetryEndpoints::new(vec![(STAGING_TELEMETRY_URL.to_string(), 0)])),
-		Some(YUHU_PROTOCOL_ID),
+		Some(PARUS_PROTOCOL_ID),
 		None,
 		None,
 	)

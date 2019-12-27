@@ -30,13 +30,13 @@ pub enum ChainSpec {
 	Kusama,
 	/// Whatever the current runtime is with the "global testnet" defaults.
 	StagingTestnet,
-	/// Yuhu Tech network
-	Yuhunet,
+	/// Parus network
+	Parus,
 }
 
 impl Default for ChainSpec {
 	fn default() -> Self {
-		ChainSpec::Yuhunet
+		ChainSpec::Parus
 	}
 }
 
@@ -44,7 +44,7 @@ impl Default for ChainSpec {
 impl ChainSpec {
 	pub(crate) fn load(self) -> Result<service::ChainSpec, String> {
 		Ok(match self {
-			ChainSpec::Yuhunet => service::chain_spec::yuhu_testnet_config(),
+			ChainSpec::Parus => service::chain_spec::parus_testnet_config(),
 			ChainSpec::Kusama => service::chain_spec::kusama_config()?,
 			ChainSpec::Development => service::chain_spec::development_config(),
 			ChainSpec::LocalTestnet => service::chain_spec::local_testnet_config(),
@@ -58,7 +58,7 @@ impl ChainSpec {
 			"local" => Some(ChainSpec::LocalTestnet),
 			"kusama" => Some(ChainSpec::Kusama),
 			"staging" => Some(ChainSpec::StagingTestnet),
-			"yuhunet" => Some(ChainSpec::Yuhunet),
+			"parus" => Some(ChainSpec::Parus),
 			"" => Some(ChainSpec::default()),
 			_ => None,
 		}
